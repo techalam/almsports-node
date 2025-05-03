@@ -50,3 +50,4 @@ pids
 
 # BFG Repo-Cleaner backups
 .bfg-report.txt
+.vercel
