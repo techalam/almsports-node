@@ -73,11 +73,11 @@ const createProduct = async (req, res) => {
 }
 
 const updateProduct = async (req, res) => {
-  const { name, price, description, imageUrl, id } = req.body;
+  const { name, price, description, category, images, id } = req.body;
   try {
     const updatedProduct = await db.query(
-      "UPDATE products SET name = $1, price = $2, description = $3, image_url = $4 WHERE id = $5 RETURNING *",
-      [name, price, description, imageUrl, id]
+      "UPDATE products SET name = $1, price = $2, description = $3, category = $4, images = $5 WHERE id = $6 RETURNING *",
+      [name, price, description, category, images, id]
     );
     if (updatedProduct.rows.length === 0) {
       return res.status(404).json({ error: "Product not found" });
